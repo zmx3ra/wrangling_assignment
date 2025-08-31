@@ -57,9 +57,6 @@ url = 'http://www.vcsc.virginia.gov/pretrialdataproject/October%202017%20Cohort_
 df3 = pd.read_csv(url,low_memory=False)
 
 
-#df3['WhetherDefendantWasReleasedPretrial']=df3['WhetherDefendantWasReleasedPretrial'].replace(' ',np.nan)
-#df3['WhetherDefendantWasReleasedPretrial']=df3['WhetherDefendantWasReleasedPretrial'].replace('yes','1')
-#df3['WhetherDefendantWasReleasedPretrial']=df3['WhetherDefendantWasReleasedPretrial'].replace('no','0')
 
 #NA=(df3['WhetherDefendantWasReleasedPretrial'].isna().sum())
 #print(NA)
