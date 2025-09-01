@@ -9,22 +9,13 @@ df=pd.read_csv("data/airbnb_hw.csv") #importing the data airbnb
 
 
 
-#print("df.shape:")
-print(df.shape, '\n') # List the dimensions of df
-
-#print("df.dtypes:")
-print(df.dtypes, '\n') # The types of the variables; `object` is a bad sign
-
-#print("df.columns:")
-print(df.columns, '\n')
-
 pd.set_option('display.max_rows', None)
 
-# I did this code so I could have my dataset show me all of the rows and columns
+# I did this code so I could have my dataset show me all of the rows and columns; documentation is in my other .py file
 pd.set_option('display.max_columns', None)
 
 # Question 1, Part 1
-
+df['Price'] = df['Price'].replace(' ',np.nan)
 x=df['Price'].isna().sum()
 print(x)
 #https://www.geeksforgeeks.org/data-analysis/working-with-missing-data-in-pandas/ (citations for my work, it printed out no null values)
@@ -47,7 +38,6 @@ length=len(df2['subject_injury'])
 print(na/length)
 # equals .76; this is concerning because there are a lot of missing values, and this column only has 1/4 actual data. it is not very reliable.
 #https://stackoverflow.com/questions/26266362/how-do-i-count-the-nan-values-in-a-column-in-pandas-dataframe
-print(df2['subject_injury'].sum())
 
 print(pd.crosstab(df2['subject_injury'],df2['force_type'])) #this is to cross tabulate 
 # baton, firearms, less lethal projectiles are the very concerning ones because they don't have many data entries in the cross tabulation 

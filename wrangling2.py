@@ -57,7 +57,7 @@ df4['Age'] = df4['Age'].replace([' ','nan','NA','N/A'], np.nan)
 df4['Age'].hist(bins=50)
 plt.show()
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
-
+# from the histogram, it appears the ages with the higher shark attacks is 20-30s
 
 plt.savefig("AGE.png")
 # saving the histogram to a picture
