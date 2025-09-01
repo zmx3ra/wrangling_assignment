@@ -48,8 +48,10 @@ plt.savefig("year_hist.png")
 # i did a histogram and judging from the histogram, the shark attacks are increasing as the years progress
 
 # Part 4
-df4['Age']=df4['Age'].astype(str)
-df4['Age']=df4['Age'].str.strip()
+df4['Age'] = pd.to_numeric(df4['Age'], errors='coerce') # Coerce the variable to numeric
+
+# Create a missing dummy:
+df4['age_nan'] = df4['Age'].isnull()
 df4['Age'] = df4['Age'].replace([' ','nan','NA','N/A'], np.nan)
 
 df4['Age'].hist(bins=50)
