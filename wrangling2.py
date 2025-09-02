@@ -37,7 +37,6 @@ print(df4['Year'].head(20))
 # I see a range of values going from 0000-2025. To clean the column, I did the following code to remove missing values.
 df4['Year'] = df4['Year'].replace(' ',np.nan)
 filtered_df4 = df4[df4['Year'] > 1939]
-print(filtered_df4['Year'].unique())
 
 
 #https://www.geeksforgeeks.org/pandas/ways-to-filter-pandas-dataframe-by-column-values/
@@ -50,14 +49,16 @@ plt.savefig("year_hist.png")
 # Part 4
 df4['Age'] = pd.to_numeric(df4['Age'], errors='coerce') # Coerce the variable to numeric
 
+
 # Create a missing dummy:
 df4['age_nan'] = df4['Age'].isnull()
-df4['Age'] = df4['Age'].replace([' ','nan','NA','N/A'], np.nan)
-
+df4['Age'] = df4['Age'].replace([' ','nan','NA','N/A','/','+','teen','?'], np.nan)
+df4['Age']=df4['Age'].replace('s','')
 df4['Age'].hist(bins=50)
 plt.show()
 # https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
 # from the histogram, it appears the ages with the higher shark attacks is 20-30s
+# the histogram has that weird blue line, please ignore (it is the parts of the column that have letters in it, I could not remove it because I am not as familiar with python regex. But the orange numbers are the normal values so I pulled from that
 
 plt.savefig("AGE.png")
 # saving the histogram to a picture
@@ -81,6 +82,8 @@ df4['Type'] = df4['Type'].replace(['Questionable','?','Unconfirmed','Unverified'
 df4['Type'] = df4['Type'].replace([' ', 'nan'], np.nan)
 print(df4['Type'].unique())
 #this is me removing the extra words and narrowing it down to three different categories, and I did a print statement to check my work
+
+
 
 a=len(df4['Type'])
 b=len(df4[df4['Type']=='Unprovoked'])
